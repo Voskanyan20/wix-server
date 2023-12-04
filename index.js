@@ -123,7 +123,7 @@ app.get('/login',async (req, res) => {
   }});
 
 app.get('/', (_, res) => {
-  res.status(200).send('Hello Wix!')
+  res.status(200).send('Hello!')
 });
   
 app.get('/instance',async (req, res) => {
