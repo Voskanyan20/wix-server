@@ -84,43 +84,44 @@ app.get('/login',async (req, res) => {
 
   console.log("authorizationCode = " + authorizationCode);
 
-  let refreshToken, accessToken;
-  try {
-    console.log("getting Tokens From Wix ");
-    console.log("=======================");
-    const data = await getTokensFromWix(authorizationCode);
+  // let refreshToken, accessToken;
+  // try {
+  //   console.log("getting Tokens From Wix ");
+  //   console.log("=======================");
+  //   const data = await getTokensFromWix(authorizationCode);
 
-    refreshToken = data.refresh_token;
-    accessToken = data.access_token;
+  //   refreshToken = data.refresh_token;
+  //   accessToken = data.access_token;
 
-    console.log("refreshToken = " + refreshToken);
-    console.log("accessToken = " + accessToken);
-    console.log("=============================");
+  //   console.log("refreshToken = " + refreshToken);
+  //   console.log("accessToken = " + accessToken);
+  //   console.log("=============================");
 
-    instance = await getAppInstance(refreshToken);
+  //   instance = await getAppInstance(refreshToken);
 
-    console.log("api call to instance returned: ");
-    console.log(instance);
+  //   console.log("api call to instance returned: ");
+  //   console.log(instance);
 
-    // TODO: Save the instanceId and tokens for future API calls
-    console.log("=============================");
-    console.log(`User's site instanceId: ${instance.instance.instanceId}`);
-    console.log("=============================");
+  //   // TODO: Save the instanceId and tokens for future API calls
+  //   console.log("=============================");
+  //   console.log(`User's site instanceId: ${instance.instance.instanceId}`);
+  //   console.log("=============================");
 
 
-    res.render('login', {  title: 'Wix Application', 
-                              app_id: APP_ID,
-                              site_display_name: instance.site.siteDisplayName,
-                              instance_id: instance.instance.instanceId, 
-                              permissions: instance.instance.permissions, 
-                              token: refreshToken,
-                              response: JSON.stringify(instance, null, '\t')});
-  } catch (wixError) {
-    console.log("Error getting token from Wix");
-    console.log({wixError});
-    res.status(401);
-    return;
-  }});
+  //   res.render('login', {  title: 'Wix Application', 
+  //                             app_id: APP_ID,
+  //                             site_display_name: instance.site.siteDisplayName,
+  //                             instance_id: instance.instance.instanceId, 
+  //                             permissions: instance.instance.permissions, 
+  //                             token: refreshToken,
+  //                             response: JSON.stringify(instance, null, '\t')});
+  // } catch (wixError) {
+  //   console.log("Error getting token from Wix");
+  //   console.log({wixError});
+  //   res.status(401);
+  //   return;
+  // }
+});
 
 app.get('/', (_, res) => {
   res.status(200).send('Hello!')
