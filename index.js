@@ -118,7 +118,7 @@ app.get('/login',async (req, res) => {
   } catch (wixError) {
     console.log("Error getting token from Wix");
     console.log({wixError});
-    res.status(500);
+    res.status(401);
     return;
   }});
 
